@@ -1,0 +1,17 @@
+@import "src/assets/style/variable";
+.register-component{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    background-image: url("/assets/image/iron-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    .register-content{
+        width: 300px;
+        margin: 0 auto;
+        background: $content-bg;
+        padding: 40px;
+        border-radius: 10px;
+    }
+}

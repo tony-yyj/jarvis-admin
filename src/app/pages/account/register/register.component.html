@@ -1,0 +1,20 @@
+<div class="register-component">
+    <div class="register-content">
+        <h2>注册/Register</h2>
+        <form [formGroup]="registerForm">
+           <mat-form-field>
+               <mat-label>用户名</mat-label>
+               <input matInput formControlName="name"/>
+           </mat-form-field>
+            <mat-form-field>
+                <mat-label>密码</mat-label>
+                <input matInput type="password" formControlName="password"/>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>确认密码</mat-label>
+                <input matInput type="password" formControlName="confirmPassword"/>
+            </mat-form-field>
+            <button mat-flat-button color="primary">提交</button>
+        </form>
+    </div>
+</div>

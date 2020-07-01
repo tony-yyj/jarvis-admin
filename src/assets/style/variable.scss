@@ -1,0 +1,17 @@
+@import "~@angular/material/theming";
+$jarvis-admin-primary: mat-palette($mat-indigo);
+$jarvis-admin-accent: mat-palette($mat-pink, A200, A100, A400);
+
+$jarvis-admin-warn: mat-palette($mat-red);
+
+$primary: mat-color($jarvis-admin-primary);
+$accent: mat-color($jarvis-admin-accent);
+$warn: mat-color($jarvis-admin-warn);
+
+$content-bg: rgba(255, 255, 255, 0.9);
+
+@mixin center() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

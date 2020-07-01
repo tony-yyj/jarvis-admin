@@ -9,11 +9,16 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { RegisterComponent } from './register/register.component';
 
 const router: Routes = [
     {
         path: 'login',
         component: LoginComponent,
+    },
+    {
+        path: 'register',
+        component: RegisterComponent,
     },
     {
         path: '',
@@ -23,7 +28,7 @@ const router: Routes = [
 ];
 
 @NgModule({
-    declarations: [LoginComponent],
+    declarations: [LoginComponent, RegisterComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(router),
