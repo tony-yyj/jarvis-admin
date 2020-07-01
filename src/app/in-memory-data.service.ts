@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {InMemoryDbService} from "angular-in-memory-web-api";
+import {InMemoryDbService, ResponseInterceptor, ResponseOptions} from "angular-in-memory-web-api";
+import {CodeEnum} from "./core/enum/code.enum";
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +8,29 @@ import {InMemoryDbService} from "angular-in-memory-web-api";
 export class InMemoryDataService implements InMemoryDbService{
 
     createDb() {
-        const userList = [
+        const user = [
             {
+                id: 3,
                 name: 'tony',
                 password: '123456',
             }
         ];
+        const login = [{
+            id: 3,
+            name: 'tony',
+            face: '',
+        }];
         return {
-            userList,
+            user,
+            login,
         }
+    }
+    responseInterceptor(res: ResponseOptions, ri: ResponseInterceptor) {
+        res.body = {
+            code: CodeEnum.SUCCESS,
+            data: res.body,
+        };
+        return res;
+
     }
 }

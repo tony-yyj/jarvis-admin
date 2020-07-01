@@ -8,6 +8,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AccountModule} from "./pages/account/account.module";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {Interceptor} from "./core/api/interceptor";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
     declarations: [
@@ -15,14 +18,27 @@ import {AccountModule} from "./pages/account/account.module";
     ],
     imports: [
         HttpClientInMemoryWebApiModule.forRoot(
-            InMemoryDataService, {dataEncapsulation: false},
+            InMemoryDataService, {
+                dataEncapsulation: false,
+                delay: 500,
+            },
         ),
         BrowserModule,
+        HttpClientModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         AccountModule,
+
+        MatSnackBarModule,
     ],
-    providers: [],
+    providers: [
+        // 拦截器
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: Interceptor,
+            multi: true,
+        }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
