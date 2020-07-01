@@ -1,0 +1,26 @@
+<div class="login-component">
+    <div class="login-content">
+        <div class="logo" routerLink="/">
+            <img src="/assets/image/logo-icon.png"/>
+        </div>
+        <h2 class="name">{{title}}</h2>
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="submit()">
+            <mat-form-field>
+                <input matInput type="text" formControlName="name" placeholder="账号">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="password" formControlName="password" placeholder="密码">
+            </mat-form-field>
+            <button class="m-t-20" [disabled]="loading" mat-raised-button color="primary">登录</button>
+            <div class="loading-area">
+                <mat-progress-bar
+                    *ngIf="loading"
+                    mode="indeterminate"
+                ></mat-progress-bar>
+            </div>
+
+        </form>
+    </div>
+
+</div>
