@@ -20,7 +20,8 @@ export class RegisterComponent implements OnInit {
             name: [null, Validators.required],
             password: [null, Validators.required],
             confirmPassword: [null, Validators.required],
+
         });
-    }
+   }
 
 }
