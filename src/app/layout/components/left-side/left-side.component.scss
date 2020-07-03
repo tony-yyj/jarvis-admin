@@ -1,0 +1,14 @@
+.left-side-component{
+    padding: 0 20px;
+    background: #fff;
+    position: relative;
+    &::after{
+        content: ' ';
+        position: absolute;
+        right: 0;
+        width: 1px;
+        top: 0;
+        bottom :0;
+        background: #f0f0f0;
+    }
+}

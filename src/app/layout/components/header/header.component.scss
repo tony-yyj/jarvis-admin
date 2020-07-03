@@ -1,0 +1,18 @@
+.header-component{
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 20px;
+    box-shadow: 0 2px 8px #f0f1f2;
+    .logo{
+        img{
+            height: 60px;
+            object-fit: contain;
+        }
+    }
+    .title{
+        font-size: 24px;
+        margin-left: 20px;
+    }
+}

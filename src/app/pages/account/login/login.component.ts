@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AccountService} from "../../../core/service/account.service";
 import {CodeEnum} from "../../../core/enum/code.enum";
 import {TipsService} from "../../../core/service/tips.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private _fb: FormBuilder,
+        private _router: Router,
         private _accountApi: AccountService,
         private _tipsApi: TipsService,
     ) {
@@ -42,7 +44,7 @@ export class LoginComponent implements OnInit {
             this.loading = false;
             if (res.code === CodeEnum.SUCCESS) {
                 this._tipsApi.success('登录成功');
-
+                this._router.navigateByUrl('/');
             }
         })
     }

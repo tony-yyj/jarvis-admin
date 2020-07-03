@@ -12,19 +12,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { RegisterComponent } from './register/register.component';
 
 const router: Routes = [
-    {
-        path: 'login',
-        component: LoginComponent,
-    },
-    {
-        path: 'register',
-        component: RegisterComponent,
-    },
-    {
-        path: '',
-        redirectTo: 'login',
-        pathMatch: 'full',
-    }
+
 ];
 
 @NgModule({

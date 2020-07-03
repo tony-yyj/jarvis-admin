@@ -1,0 +1,64 @@
+@import "src/assets/style/variable";
+.footer-component{
+    border-top: 1px solid #f0f0f0;
+    height: 80px;
+    padding: 10px 0;
+    margin-top: 10px;
+    text-align: center;
+    color: #666;
+    .icon-row{
+        display: flex;
+        justify-content: center;
+        .center{
+            width: 40px;
+            height: 40px;
+            img{
+                max-width: 40px;
+                max-height: 40px;
+                object-fit: contain;
+            }
+        }
+    }
+    .copyright {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        & > * {
+            margin: 0 5px;
+            align-items: center;
+        }
+        a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            &:hover {
+                color: #333;
+                border-bottom-color: #999;
+            }
+        }
+    }
+
+    .with-love {
+        color: #ff0000;
+        margin: 0 5px;
+        animation: iconAnimate 1.33s ease-in-out infinite;
+    }
+    @keyframes iconAnimate {
+        0%, 100% {
+            transform: scale(1);
+        }
+
+        10%, 30% {
+            transform: scale(.9);
+        }
+
+        20%, 40%, 60%, 80% {
+            transform: scale(1.1);
+        }
+
+        50%, 70% {
+            transform: scale(1.1);
+        }
+    }
+}

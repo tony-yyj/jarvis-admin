@@ -11,6 +11,7 @@ import {AccountModule} from "./pages/account/account.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {Interceptor} from "./core/api/interceptor";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {LayoutModule} from "./layout/layout.module";
 
 @NgModule({
     declarations: [
@@ -28,7 +29,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
         AppRoutingModule,
         BrowserAnimationsModule,
         AccountModule,
-
+        LayoutModule,
         MatSnackBarModule,
     ],
     providers: [
