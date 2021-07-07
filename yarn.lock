@@ -130,10 +130,12 @@
   dependencies:
     tslib "^2.2.0"
 
-"@angular/cdk@^9.2.4":
-  version "9.2.4"
-  resolved "https://registry.npm.taobao.org/@angular/cdk/download/@angular/cdk-9.2.4.tgz#8413958bd275e4c34be3b96f56444671dd30ba93"
-  integrity sha1-hBOVi9J15MNL47lvVkRGcd0wupM=
+"@angular/cdk@^12.1.1":
+  version "12.1.1"
+  resolved "https://registry.nlark.com/@angular/cdk/download/@angular/cdk-12.1.1.tgz#83b7ec7d5b97a003d31ea0dd25403e890d5e06ea"
+  integrity sha1-g7fsfVuXoAPTHqDdJUA+iQ1eBuo=
+  dependencies:
+    tslib "^2.2.0"
   optionalDependencies:
     parse5 "^5.0.0"
 
@@ -225,10 +227,12 @@
   resolved "https://registry.nlark.com/@angular/language-service/download/@angular/language-service-12.1.1.tgz#8e8e4857c1ba1383bdf73a35e8bc3cb1fb24dff9"
   integrity sha1-jo5IV8G6E4O99zo16Lw8sfsk3/k=
 
-"@angular/material@^9.2.4":
-  version "9.2.4"
-  resolved "https://registry.npm.taobao.org/@angular/material/download/@angular/material-9.2.4.tgz#2666ef606fbb88d60f8e2f18c5e4f94a3dd572d8"
-  integrity sha1-JmbvYG+7iNYPji8YxeT5Sj3Vctg=
+"@angular/material@^12.1.1":
+  version "12.1.1"
+  resolved "https://registry.nlark.com/@angular/material/download/@angular/material-12.1.1.tgz#9b01743b54b68ef8a4f8904032caef625403df70"
+  integrity sha1-mwF0O1S2jvik+JBAMsrvYlQD33A=
+  dependencies:
+    tslib "^2.2.0"
 
 "@angular/platform-browser-dynamic@~12.1.1":
   version "12.1.1"
