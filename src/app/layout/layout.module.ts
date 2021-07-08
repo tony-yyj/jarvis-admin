@@ -10,7 +10,10 @@ import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
-  declarations: [MainComponent, HeaderComponent, FooterComponent, LeftSideComponent],
+    declarations: [MainComponent, HeaderComponent, FooterComponent, LeftSideComponent],
+    exports: [
+        HeaderComponent
+    ],
     imports: [
         CommonModule,
         RouterModule,

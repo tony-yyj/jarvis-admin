@@ -7,6 +7,10 @@ import {RegisterComponent} from './pages/account/register/register.component';
 
 const routes: Routes = [
     {
+        path: 'drag',
+        loadChildren: () => import('./pages/drag/drag.module').then(m => m.DragModule),
+    },
+    {
         path: 'login',
         component: LoginComponent,
     },
