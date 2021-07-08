@@ -6,6 +6,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {DragComponent} from './drag/drag.component';
+import {ShareModule} from '../../share.module';
 
 const router: Routes = [
     {
@@ -32,6 +33,7 @@ const router: Routes = [
         ReactiveFormsModule,
         MatInputModule,
         MatButtonModule,
+        ShareModule,
     ]
 })
 export class DashboardModule {
