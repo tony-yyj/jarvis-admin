@@ -1,3 +1,18 @@
-<div class="drag-area" appDrop #dragArea>
-    <p>可拖放组件</p>
+<div class="container">
+    <ng-container *ngFor="let component of componentList">
+        <ng-container *ngIf="component.type === 'empty'">
+            <ng-container *ngTemplateOutlet="dropArea; context: {component}">
+
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="component.type !== 'empty'">
+            <p>{{component.type}}</p>
+        </ng-container>
+    </ng-container>
 </div>
+
+<ng-template #dropArea let-componentInfo="component">
+    <div class="drag-area" appDrop (dropEvent)="getDropEvent($event)" [dropData]="componentInfo">
+        <p>可拖放组件</p>
+    </div>
+</ng-template>

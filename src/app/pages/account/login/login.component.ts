@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AccountService} from "../../../core/service/account.service";
-import {CodeEnum} from "../../../core/enum/code.enum";
-import {TipsService} from "../../../core/service/tips.service";
-import {Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AccountService} from '../../../core/services/account.service';
+import {CodeEnum} from '../../../core/enum/code.enum';
+import {TipsService} from '../../../core/services/tips.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-login',

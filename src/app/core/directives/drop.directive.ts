@@ -1,4 +1,6 @@
-import {Directive, ElementRef, HostListener} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, HostListener, Input, Output} from '@angular/core';
+import {DropDataInterface} from '../interfaces/drag.interface';
+
 
 @Directive({
     selector: '[appDrop]'
@@ -6,23 +8,11 @@ import {Directive, ElementRef, HostListener} from '@angular/core';
 export class DropDirective {
 
     el: ElementRef;
-    divBefore: HTMLElement;
-    divRear: HTMLElement;
+    @Input() dropData: { id: string, type: string };
+    @Output() dropEvent: EventEmitter<DropDataInterface> = new EventEmitter();
 
     constructor(el: ElementRef) {
         this.el = el;
-        this.divRear = DropDirective.getPlaceholderAreaEl();
-        this.divBefore = DropDirective.getPlaceholderAreaEl();
-        // this.el.nativeElement.appendChild(this.divBefore);
-        // this.el.nativeElement.appendChild(this.divRear);
-    }
-
-    static getPlaceholderAreaEl() {
-        const div = document.createElement('div');
-        div.style.width = '100%';
-        div.style.height = '40px';
-        div.style.border = '1px solid #ccc';
-        return div;
     }
 
     @HostListener('dragover', ['$event'])
@@ -32,20 +22,35 @@ export class DropDirective {
         return false;
     }
 
+    // 拖拽离开
+    @HostListener('dragleave', ['$event'])
+    dragleave(e) {
+        e.target.style.background = '#fff';
+        e.target.style.borderStyle = 'dashed';
+    }
+
+    // 拖拽完成
+    @HostListener('dragend', ['$event'])
+    dragend(e) {
+    }
+
     @HostListener('drop', ['$event'])
     drop(e) {
         console.log(e);
         e.preventDefault();
         const text = e.dataTransfer.getData('text');
-        console.log(text);
-        const p = document.createElement('p');
-        p.innerText = text;
-        this.el.nativeElement.appendChild(p);
+        this.dropEvent.emit({
+            component: text,
+            currentAreaInfo: this.dropData,
+        });
+        // 拖拽事件完成
+        e.target.style.background = '#fff';
     }
 
     @HostListener('dragenter', ['$event'])
     dragenter(e) {
         console.log('x', e.offsetX, 'y', e.offsetY);
+        e.target.style.background = '#ccc';
     }
 
 

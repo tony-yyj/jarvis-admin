@@ -1,9 +1,10 @@
-import {Directive, ElementRef, HostListener} from '@angular/core';
+import {Directive, ElementRef, HostListener, Input} from '@angular/core';
 
 @Directive({
     selector: '[appDrag]'
 })
 export class DragDirective {
+    @Input() componentType: string = null;
     el: ElementRef;
 
     static dragWidthCustomerImage(event) {
@@ -32,7 +33,7 @@ export class DragDirective {
     dragstart(e) {
         const dt = e.dataTransfer;
         dt.effectAllowed = 'copy';
-        dt.setData('text/plain', 'this text may be dragged');
+        dt.setData('text/plain', this.componentType);
         // DragDirective.dragWidthCustomerImage(e);
     }
 
