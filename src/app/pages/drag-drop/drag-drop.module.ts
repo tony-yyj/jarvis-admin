@@ -1,12 +1,13 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RouterModule, Routes} from '@angular/router';
 import {IndexComponent} from './index/index.component';
-import {LayoutModule} from '../../layout/layout.module';
-import {DragComponent} from './drag/drag.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {ShareModule} from '../../share.module';
+import {DrawAreaComponent} from './draw-area/draw-area.component';
+import {RouterModule, Routes} from '@angular/router';
+import {LayoutModule} from "../../layout/layout.module";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import { ToolListComponent } from './tool-list/tool-list.component';
+import {ShareModule} from "../../share.module";
 
 const router: Routes = [
     {
@@ -20,10 +21,12 @@ const router: Routes = [
     }
 ];
 
+
 @NgModule({
     declarations: [
         IndexComponent,
-        DragComponent,
+        DrawAreaComponent,
+        ToolListComponent
     ],
     imports: [
         CommonModule,
@@ -34,5 +37,5 @@ const router: Routes = [
         ShareModule,
     ]
 })
-export class DragModule {
+export class DragDropModule {
 }

@@ -1,22 +1,18 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import uuid from '../../../utils/uuid';
-import guid from '../../../utils/uuid';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {DropDataInterface} from '../../../core/interfaces/drag.interface';
+import guid from '../../../utils/uuid';
 
 @Component({
-    selector: 'app-drag',
-    templateUrl: './drag.component.html',
-    styleUrls: ['./drag.component.scss']
+    selector: 'app-draw-area',
+    templateUrl: './draw-area.component.html',
+    styleUrls: ['./draw-area.component.scss']
 })
-export class DragComponent implements OnInit, AfterViewInit {
+export class DrawAreaComponent implements OnInit, AfterViewInit {
     componentList: { id: string, type: string }[] = [];
-
-    constructor() {
-    }
 
     ngOnInit(): void {
         this.componentList.push({
-            id: uuid(),
+            id: guid(),
             type: 'empty',
         });
     }
@@ -33,6 +29,4 @@ export class DragComponent implements OnInit, AfterViewInit {
             {id: guid(), type: 'empty'},
         );
     }
-
-
 }

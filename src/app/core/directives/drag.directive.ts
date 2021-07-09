@@ -1,32 +1,23 @@
 import {Directive, ElementRef, HostListener, Input} from '@angular/core';
+import {getDpi} from '../../utils/common';
 
 @Directive({
     selector: '[appDrag]'
 })
 export class DragDirective {
     @Input() componentType: string = null;
-    el: ElementRef;
+    // 拖动占位符
+    @Input() dragPlaceholder: HTMLCanvasElement;
 
-    static dragWidthCustomerImage(event) {
-        // const canvas = document.createElementNS('http://www.w3.org/1999/xhtml', 'canvas') as HTMLCanvasElement;
-        const canvas = document.createElement('canvas');
-        canvas.width = canvas.height = 50;
-        const ctx = canvas.getContext('2d');
-        ctx.lineWidth = 4;
-        ctx.moveTo(0, 0);
-        ctx.lineTo(50, 50);
-        ctx.moveTo(0, 50);
-        ctx.lineTo(50, 0);
-        ctx.stroke();
-        const dt = event.dataTransfer;
-        dt.setData('text/plain', 'Data to Drag');
-        dt.setDragImage(canvas, 25, 25);
-    }
+    canvasConfig = {
+        width: 100,
+        height: 50,
+    };
+
 
     constructor(el: ElementRef) {
-        this.el = el;
-        this.el.nativeElement.setAttribute('draggable', true);
-        this.el.nativeElement.style.cursor = 'move';
+        el.nativeElement.setAttribute('draggable', true);
+        el.nativeElement.style.cursor = 'move';
     }
 
     @HostListener('dragstart', ['$event'])
@@ -34,7 +25,42 @@ export class DragDirective {
         const dt = e.dataTransfer;
         dt.effectAllowed = 'copy';
         dt.setData('text/plain', this.componentType);
-        // DragDirective.dragWidthCustomerImage(e);
+        this.dragWidthCustomerImage(e);
     }
 
+    // 拖拽完成
+    @HostListener('dragend', ['$event'])
+    dragend(e) {
+        this.resetCanvas(this.dragPlaceholder);
+    }
+
+    dragWidthCustomerImage(event) {
+        this.drawCanvas(this.dragPlaceholder, this.componentType);
+        event.dataTransfer.setDragImage(this.dragPlaceholder, 25, 25);
+    }
+
+    drawCanvas(canvasEl: HTMLCanvasElement, text: string) {
+        const ratio = getDpi();
+        canvasEl.style.width = this.canvasConfig.width + 'px';
+        canvasEl.style.height = this.canvasConfig.height + 'px';
+
+        canvasEl.width = this.canvasConfig.width * ratio;
+        canvasEl.height = this.canvasConfig.height * ratio;
+        const context = canvasEl.getContext('2d');
+        context.clearRect(0, 0, canvasEl.width, canvasEl.height);
+        context.fillStyle = '#999';
+        context.fillRect(0, 0, canvasEl.width, canvasEl.height);
+        // 放置文字
+        context.fillStyle = '#fff';
+        const fontSize = 14;
+        context.font = `${fontSize * ratio}px Arial`;
+        context.fillText(text, 0, canvasEl.height / 2);
+    }
+
+    resetCanvas(canvasEl) {
+        canvasEl.style.width = '0px';
+        canvasEl.style.height = '0px';
+        canvasEl.width = 0;
+        canvasEl.height = 0;
+    }
 }
